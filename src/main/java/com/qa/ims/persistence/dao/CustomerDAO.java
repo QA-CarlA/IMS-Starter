@@ -19,9 +19,9 @@ public class CustomerDAO implements Dao<Customer> {
 
 	@Override
 	public Customer modelFromResultSet(ResultSet resultSet) throws SQLException {
-		Long id = resultSet.getLong("id");
-		String firstName = resultSet.getString("first_name");
-		String surname = resultSet.getString("surname");
+		Long id = resultSet.getLong("customerID");
+		String firstName = resultSet.getString("firstName");
+		String surname = resultSet.getString("lastName");
 		return new Customer(id, firstName, surname);
 	}
 
@@ -50,7 +50,7 @@ public class CustomerDAO implements Dao<Customer> {
 	public Customer readLatest() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM customers ORDER BY id DESC LIMIT 1");) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM customers ORDER BY customerID DESC LIMIT 1");) {
 			resultSet.next();
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -69,7 +69,7 @@ public class CustomerDAO implements Dao<Customer> {
 	public Customer create(Customer customer) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("INSERT INTO customers(first_name, surname) values('" + customer.getFirstName()
+			statement.executeUpdate("INSERT INTO customers(firstName, lastName) values('" + customer.getFirstName()
 					+ "','" + customer.getSurname() + "')");
 			return readLatest();
 		} catch (Exception e) {
@@ -82,7 +82,7 @@ public class CustomerDAO implements Dao<Customer> {
 	public Customer readCustomer(Long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM customers where id = " + id);) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM customers where customerID = " + id);) {
 			resultSet.next();
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -103,8 +103,8 @@ public class CustomerDAO implements Dao<Customer> {
 	public Customer update(Customer customer) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("update customers set first_name ='" + customer.getFirstName() + "', surname ='"
-					+ customer.getSurname() + "' where id =" + customer.getId());
+			statement.executeUpdate("update customers set firstName ='" + customer.getFirstName() + "', lastName ='"
+					+ customer.getSurname() + "' where customerID =" + customer.getId());
 			return readCustomer(customer.getId());
 		} catch (Exception e) {
 			LOGGER.debug(e);
@@ -122,7 +122,7 @@ public class CustomerDAO implements Dao<Customer> {
 	public int delete(long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			return statement.executeUpdate("delete from customers where id = " + id);
+			return statement.executeUpdate("delete from customers where customerID = " + id);
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
