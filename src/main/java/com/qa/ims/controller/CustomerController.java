@@ -48,7 +48,7 @@ public class CustomerController implements CrudController<Customer> {
 		LOGGER.info("Please enter a surname");
 		String surname = utils.getString();
 		Customer customer = customerDAO.create(new Customer(firstName, surname));
-		LOGGER.info("Customer created");
+		LOGGER.info("Customer Created!... Returning back to Menu\n");
 		return customer;
 	}
 
@@ -64,8 +64,16 @@ public class CustomerController implements CrudController<Customer> {
 		LOGGER.info("Please enter a surname");
 		String surname = utils.getString();
 		Customer customer = customerDAO.update(new Customer(id, firstName, surname));
-		LOGGER.info("Customer Updated");
-		return customer;
+		if (customer != null)
+		{
+			LOGGER.info("Customer Updated!... returning to Menu\n");
+			return customer;
+		}
+		else
+		{
+			LOGGER.info("Update Failed! Customer ID not found... returning to Menu\n");
+			return null;
+		}		
 	}
 
 	/**
@@ -77,6 +85,15 @@ public class CustomerController implements CrudController<Customer> {
 	public int delete() {
 		LOGGER.info("Please enter the id of the customer you would like to delete");
 		Long id = utils.getLong();
+		int rID = customerDAO.delete(id);
+		if (rID == 0)
+		{
+			LOGGER.info("Delete Failed! Customer ID not found... returning to Menu\n");
+		}
+		else
+		{
+			LOGGER.info("Delete Success!... returning to Menu\n");
+		}
 		return customerDAO.delete(id);
 	}
 
