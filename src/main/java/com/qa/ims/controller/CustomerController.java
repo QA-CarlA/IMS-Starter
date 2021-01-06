@@ -94,7 +94,7 @@ public class CustomerController implements CrudController<Customer> {
 		{
 			LOGGER.info("Delete Success!... returning to Menu\n");
 		}
-		return customerDAO.delete(id);
+		return rID;
 	}
 
 }
