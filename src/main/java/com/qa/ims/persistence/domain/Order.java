@@ -22,12 +22,12 @@ public class Order
 		this.itemsOrdered = itemsOrdered;
 	}
 	
-	public Order (Long orderID, Long customerID, HashMap<Long, Long> itemsOrdered)
-	{
-		this.orderID = orderID;
-		this.customerID = customerID;
-		this.itemsOrdered = itemsOrdered;
-	}
+//	public Order (Long orderID, Long customerID, HashMap<Long, Long> itemsOrdered)
+//	{
+//		this.orderID = orderID;
+//		this.customerID = customerID;
+//		this.itemsOrdered = itemsOrdered;
+//	}
 
 	public Long getOrderID() {
 		return orderID;

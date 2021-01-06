@@ -1,5 +1,7 @@
 package com.qa.ims.controller;
 
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 
@@ -7,7 +9,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.qa.ims.persistence.dao.OrderDAO;
+import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.persistence.domain.Order;
+import com.qa.ims.utils.DBUtils;
 import com.qa.ims.utils.Utils;
 
 public class OrderController implements CrudController<Order>
@@ -70,14 +74,53 @@ public class OrderController implements CrudController<Order>
 	}
 
 	@Override
-	public Order update() {
-		// TODO Auto-generated method stub
-		return null;
+	public Order update() 
+	{
+		LOGGER.info("Please enter the id of the order you would like to update");
+		Long orderID = utils.getLong();
+		LOGGER.info("What would you like to do with the order?");
+		LOGGER.info("ADD: Add item to the current order");
+		LOGGER.info("DELETE: Remove item from the current order");
+		LOGGER.info("CANCEL: Cancel update");
+		String choice = utils.getString().toUpperCase();
+		Order order = null;
+		switch (choice)
+		{
+		case "ADD" :
+			LOGGER.info("Enter the Item ID to be placed in the order:");
+			Long addItemID = utils.getLong();
+			LOGGER.info("How many items would you like to add to the order?");
+			Long itemQuantity = utils.getLong();
+			orderDAO.addToOrder(orderID, addItemID, itemQuantity);
+			LOGGER.info("Item Added!... Returning to Menu\n");
+			break;
+		case "DELETE":
+			LOGGER.info("Enter the Item ID to be deleted in the order:");
+			Long deleteItemID = utils.getLong();
+			orderDAO.deleteFromOrder(orderID, deleteItemID);
+			break;
+		case "CANCEL":
+			return null;
+		default:
+			LOGGER.info("Invalid Choice... Returning to Update Menu\n");
+			update();
+		}
+		return order;
 	}
 
 	@Override
 	public int delete() {
-		// TODO Auto-generated method stub
-		return 0;
+		LOGGER.info("Please enter the id of the order you would like to delete");
+		Long deleteID = utils.getLong();
+		int rID = orderDAO.delete(deleteID);
+		if (rID == 0)
+		{
+			LOGGER.info("Delete Failed! Order ID not found... returning to Menu\n");
+		}
+		else
+		{
+			LOGGER.info("Delete Success!... returning to Menu\n");
+		}
+		return rID;
 	}
 }
