@@ -65,11 +65,31 @@ public class ItemDAO implements Dao<Item>
 		return new ArrayList<>();
 	}
 
-	
+	public Item readItem(Long id) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM items where itemID = " + id);) {
+			resultSet.next();
+			return modelFromResultSet(resultSet);
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
 
 	@Override
-	public Item update(Item t) {
-		// TODO Auto-generated method stub
+	public Item update(Item item) 
+	{
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				Statement statement = connection.createStatement();) {
+			statement.executeUpdate("update items set itemName ='" + item.getItemName() + "', itemPrice ='"
+					+ item.getItemCost() + "', itemStockCount ='" + item.getItemStock() + "' where itemID =" + item.getId());
+			return readItem(item.getId());
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
 		return null;
 	}
 
