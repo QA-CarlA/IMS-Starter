@@ -7,3 +7,10 @@ CREATE TABLE IF NOT EXISTS `ims`.`customers` (
     `lastName` VARCHAR(45) NULL DEFAULT NULL,
     PRIMARY KEY (`customerID`)
 );
+CREATE TABLE IF NOT EXISTS `ims`.`items` (
+  `itemID` INT(11) NOT NULL AUTO_INCREMENT,
+  `itemName` VARCHAR(45) NOT NULL,
+  `itemPrice` DOUBLE NOT NULL,
+  `itemStockCount` INT(11) NOT NULL,
+  PRIMARY KEY (`itemID`)
+ );
