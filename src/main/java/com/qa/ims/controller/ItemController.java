@@ -68,15 +68,26 @@ public class ItemController implements CrudController<Item>
 		}
 		else
 		{
-			LOGGER.info("Update Failed! Customer ID not found... returning to Menu\n");
+			LOGGER.info("Update Failed! Item ID not found... returning to Menu\n");
 			return null;
 		}		
 	}
 
 	@Override
-	public int delete() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete() 
+	{
+		LOGGER.info("Please enter the id of the item you would like to delete");
+		Long id = utils.getLong();
+		int rID = itemDAO.delete(id);
+		if (rID == 0)
+		{
+			LOGGER.info("Delete Failed! Item ID not found... returning to Menu\n");
+		}
+		else
+		{
+			LOGGER.info("Delete Success!... returning to Menu\n");
+		}
+		return rID;
 	}
 	
 	
