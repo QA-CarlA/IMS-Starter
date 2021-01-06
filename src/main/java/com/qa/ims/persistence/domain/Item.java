@@ -7,19 +7,19 @@ public class Item
 	private double itemCost;
 	private Long itemStock;
 	
-	public Item (String itemName, Long itemStock, double itemCost)
+	public Item (String itemName, double itemCost, Long itemStock)
 	{
 		this.itemName = itemName;
-		this.itemStock = itemStock;
 		this.itemCost = itemCost;
+		this.itemStock = itemStock;
 	}
 	
-	public Item (Long id, String itemName, Long itemStock, double itemCost)
+	public Item (Long id, String itemName, double itemCost, Long itemStock)
 	{
 		this.id = id;
 		this.itemName = itemName;
-		this.itemStock = itemStock;
 		this.itemCost = itemCost;
+		this.itemStock = itemStock;
 	}
 
 	public Long getId() {
