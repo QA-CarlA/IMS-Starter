@@ -20,12 +20,16 @@ public class DBUtils {
 	private final String DB_PASS;
 
 	private final String DB_URL = "jdbc:mysql://localhost/ims";
+	public static boolean success = false;
 
 	private DBUtils(String username, String password) {
 		this.DB_USER = username;
 		this.DB_PASS = password;
 
-		init();
+		if (init() != 0)
+		{
+			success = true;
+		}
 	}
 
 	public int init() {

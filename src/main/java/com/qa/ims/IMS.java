@@ -35,12 +35,22 @@ public class IMS {
 	}
 
 	public void imsSystem() {
-		LOGGER.info("What is your username");
-		String username = utils.getString();
-		LOGGER.info("What is your password");
-		String password = utils.getString();
+		
+		do
+		{
+			LOGGER.info("What is your username");
+			String username = utils.getString();
+			LOGGER.info("What is your password");
+			String password = utils.getString();
 
-		DBUtils.connect(username, password);
+			DBUtils.connect(username, password);
+			if(DBUtils.success == false)
+			{
+				LOGGER.info("Incorrect details! Try Again!\n");
+			}
+		}while(DBUtils.success == false);
+		LOGGER.info("Login Success!\n");
+		
 		Domain domain = null;
 		do {
 			LOGGER.info("Which entity would you like to use?");
