@@ -98,6 +98,7 @@ public class OrderController implements CrudController<Order>
 			LOGGER.info("Enter the Item ID to be deleted in the order:");
 			Long deleteItemID = utils.getLong();
 			orderDAO.deleteFromOrder(orderID, deleteItemID);
+			LOGGER.info("Item Deleted from Order!... Returning to Menu\n");
 			break;
 		case "CANCEL":
 			return null;
