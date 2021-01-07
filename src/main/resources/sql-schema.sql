@@ -19,12 +19,12 @@ CREATE TABLE IF NOT EXISTS `ims`.`orders`(
 	`customerID` INT(11) NOT NULL,
 	`datePlaced` DATETIME DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(orderID),
-	FOREIGN KEY(customerID) REFERENCES customers(customerID)
+	FOREIGN KEY(customerID) REFERENCES customers(customerID) ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS `ims`.`order_items`(
 	`orderID` INT(11) NOT NULL,
 	`itemID` INT(11) NOT NULL,
 	`itemQuantity` INT(11) NOT NULL,
-	FOREIGN KEY(orderID) REFERENCES orders(orderID),
-	FOREIGN KEY(itemID) REFERENCES items(itemID)
+	FOREIGN KEY(orderID) REFERENCES orders(orderID) ON DELETE CASCADE,
+	FOREIGN KEY(itemID) REFERENCES items(itemID) ON DELETE CASCADE
 );	
