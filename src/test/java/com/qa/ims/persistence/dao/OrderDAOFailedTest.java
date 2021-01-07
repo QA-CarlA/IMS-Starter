@@ -28,29 +28,29 @@ public class OrderDAOFailedTest {
 	public void testCreate()
 	{
 		final Order created = new Order(10L, 10L, "2020-12-01 01:01:01");
-		assertEquals(created, order.create(created));
+		assertEquals(null, order.create(created));
 	}
 	
 	@Test
 	public void testReadAll()
 	{
-		assertEquals(null, order.readAll());
+		assertEquals(new ArrayList<>(), order.readAll());
 	}
 	
 	@Test
 	public void testDelete()
 	{
-		assertEquals(1, order.delete(1));
+		assertEquals(0, order.delete(1));
 	}
 	
 	@Test
 	public void testAddToOrder() {
-		assertEquals(null, order.addToOrder(1L, 1L, 1L));
+		assertEquals(0, order.addToOrder(1L, 1L, 1L));
 	}
 	
 	@Test
 	public void testRemoveFromOrder() {
-		assertEquals(1, order.deleteFromOrder(1L, 1L));
+		assertEquals(0, order.deleteFromOrder(1L, 1L));
 	}
 
 

@@ -1,6 +1,7 @@
 package com.qa.ims.controllers;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,12 +86,12 @@ public class ItemControllerTest
 	{
 		Item updated = new Item(10L, "B2 Poster", 25.99, 20L);
 		
-		Mockito.when(this.utils.getLong()).thenReturn(1L, updated.getItemStock());
+		Mockito.when(this.utils.getLong()).thenReturn(updated.getId(), updated.getItemStock());
 		Mockito.when(this.utils.getString()).thenReturn(updated.getItemName());
 		Mockito.when(this.utils.getDouble()).thenReturn(updated.getItemCost());
 		Mockito.when(this.dao.update(updated)).thenReturn(null);
 		
-		assertEquals(updated, this.controller.update());
+		assertNotEquals(updated, this.controller.update());
 		
 		Mockito.verify(this.utils, Mockito.times(2)).getLong();
 		Mockito.verify(this.utils, Mockito.times(1)).getString();
@@ -120,7 +121,7 @@ public class ItemControllerTest
 		Mockito.when(utils.getLong()).thenReturn(testID);
 		Mockito.when(dao.delete(testID)).thenReturn(0);
 		
-		assertEquals(1l, this.controller.delete());
+		assertNotEquals(1l, this.controller.delete());
 		
 		Mockito.verify(utils, Mockito.times(1)).getLong();
 		Mockito.verify(dao, Mockito.times(1)).delete(testID);
