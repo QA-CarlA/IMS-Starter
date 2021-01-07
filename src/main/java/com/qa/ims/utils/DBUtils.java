@@ -19,7 +19,7 @@ public class DBUtils {
 
 	private final String DB_PASS;
 
-	private final String DB_URL = "jdbc:mysql://localhost/ims";
+	private final String DB_URL = "jdbc:mysql://localhost:3306/ims";
 	public static boolean success = false;
 
 	private DBUtils(String username, String password) {
