@@ -37,19 +37,6 @@ public class OrderDAO implements Dao<Order>
 		return new ArrayList<>();
 	}
 	
-	public Order readOrder(Long id) {
-		try (Connection connection = DBUtils.getInstance().getConnection();
-				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders WHERE orderID =" + id);) {
-			resultSet.next();
-			return modelFromResultSet(resultSet);
-		} catch (Exception e) {
-			LOGGER.debug(e);
-			LOGGER.error(e.getMessage());
-		}
-		return null;
-	}
-	
 	public Order readLatest() 
 	{
 		try (Connection connection = DBUtils.getInstance().getConnection();
@@ -90,7 +77,7 @@ public class OrderDAO implements Dao<Order>
 		return null;
 	}
 	
-	public void addToOrder(Long orderID, Long itemID, Long itemQuantity)
+	public int addToOrder(Long orderID, Long itemID, Long itemQuantity)
 	{
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				 Statement statement = connection.createStatement();)
@@ -100,9 +87,10 @@ public class OrderDAO implements Dao<Order>
 				LOGGER.debug(e);
 				LOGGER.error(e.getMessage());
 			}
+		return 0;
 	}
 	
-	public void deleteFromOrder(Long orderID, Long itemID)
+	public int deleteFromOrder(Long orderID, Long itemID)
 	{
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				 Statement statement = connection.createStatement();)
@@ -112,6 +100,7 @@ public class OrderDAO implements Dao<Order>
 				LOGGER.debug(e);
 				LOGGER.error(e.getMessage());
 			}
+		return 0;
 	}
 
 	@Override
