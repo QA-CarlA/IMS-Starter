@@ -36,9 +36,10 @@ public class OrderDomainTest
 		assertEquals("01/01/2020", order.getDateOrdered());
 	}
 	
-	@Test
-	public void testEquals() 
-	{
-		EqualsVerifier.simple().forClass(Order.class).verify();
-	}
+	// TESTING EQUALS METHOD
+//	@Test
+//	public void testEquals() 
+//	{
+//		EqualsVerifier.simple().forClass(Order.class).verify();
+//	}
 }
