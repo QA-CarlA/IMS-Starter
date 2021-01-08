@@ -1,4 +1,5 @@
-Coverage: 75%
+Coverage: 78.1%
+Jira Kanban - [Link](https://test20novsoft2.atlassian.net/secure/RapidBoard.jspa?rapidView=3&projectKey=PC&atlOrigin=eyJpIjoiYjJjM2ExODlkMzUwNDIyZGI2MjM5ODM1NDBkMjZmNTAiLCJwIjoiaiJ9)
 # Project Title
 
 The Inventory Management System allows the user to create, read, update and delete Customers, Items and Orders.
@@ -13,9 +14,9 @@ Java (Specifically Java 14) and Maven was used to develop this.
 To verify that java has been installed properly you can type "java -version" on the command line likewise with maven by typing "mvn -version" on the command line
 
 ```
-Java (Java Version 14) - https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html
-Maven - https://maven.apache.org/
-Git (not mandatory but makes it easier) - https://git-scm.com
+Java (Java Version 14) - [Link](https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html)
+Maven - [Link](https://maven.apache.org/)
+Git (not mandatory but makes it easier) - [Link](https://git-scm.com)
 ```
 
 ### Installing
