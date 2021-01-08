@@ -13,9 +13,9 @@ Java (Specifically Java 14) and Maven was used to develop this.
 To verify that java has been installed properly you can type "java -version" on the command line likewise with maven by typing "mvn -version" on the command line
 
 ```
-Java (Java Version 14) - <a href="https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html">Link</a>
+Java (Java Version 14) - https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html
 Maven - https://maven.apache.org/
-Git (not mandatory but makes it easier) - <a href="https://git-scm.com/">Link</a>
+Git (not mandatory but makes it easier) - https://git-scm.com
 ```
 
 ### Installing
@@ -32,7 +32,7 @@ OR
 Right Click on ProgramLocation folder then press 'Git Bash here'
 ```
 
-Copy the repository link and use 'git clone *link*' 
+Copy the repository link and use 'git clone -insert link here-' 
 
 ```
 C:\Users\User\ProjectLocation> git clone https://github.com/QA-CarlA/IMS-Starter.git
