@@ -13,11 +13,11 @@ These instructions will get you a copy of the project up and running on your loc
 Java (Specifically Java 14) and Maven was used to develop this. 
 To verify that java has been installed properly you can type "java -version" on the command line likewise with maven by typing "mvn -version" on the command line
 
-```
 Java (Java Version 14) - [Link](https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html)
+
 Maven - [Link](https://maven.apache.org/)
+
 Git (not mandatory but makes it easier) - [Link](https://git-scm.com)
-```
 
 ### Installing
 -The provided jar file only works with a local host database.
@@ -56,32 +56,41 @@ To be able to run the tests, open Command Prompt on the project folder then type
 C:\Users\User\ProjectLocation\IMS-Starter> mvn test
 ```
 
+All the tests are located in the test folder.
+
 ### Unit Tests 
 
-Explain what these tests test, why and how to run them
+```
+public void testCreate() 
+  {
+		final Customer created = new Customer(8L, "Fubuki", "Kurokami");
+		assertEquals(created, DAO.create(created));
+	}
+```
+The code above is part of the *CustomerDAOTest* which ensures that the CustomerDAO is connecting to the database and modifying the customer data. The snippet tests that a customer has been created
 
 ```
-Give an example
+public void testCreate()
+	{
+		final String testName = "Poster";
+		final Double testPrice = 19.99;
+		final Long testStock = 100L;
+		final Item created = new Item(testName, testPrice, testStock);
+		
+		Mockito.when(utils.getString()).thenReturn(testName);
+		Mockito.when(utils.getDouble()).thenReturn(testPrice);
+		Mockito.when(utils.getLong()).thenReturn(testStock);
+		Mockito.when(dao.create(created)).thenReturn(created);
+		
+		assertEquals(created, controller.create());
+		
+		Mockito.verify(utils, Mockito.times(1)).getString();
+		Mockito.verify(utils, Mockito.times(1)).getDouble();
+		Mockito.verify(utils, Mockito.times(1)).getLong();
+		Mockito.verify(dao, Mockito.times(1)).create(created);
+	}
 ```
-
-### Integration Tests 
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+The code above is part of the *ItemControllerTest* and it uses Mockito which mocks the method. The snippet tests that the item is created.
 
 ## Built With
 
@@ -94,6 +103,7 @@ We use [SemVer](http://semver.org/) for versioning.
 ## Authors
 
 * **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
+* **Carl Angeles** - *Continued work* -[QA-CarlA](https://github.com/QA-CarlA)
 
 ## License
 
@@ -102,7 +112,4 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 *For help in [Choosing a license](https://choosealicense.com/)*
 
 ## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+The project wouldn't be possible without the help of the QA Trainers that have taught me what I needed for this project.
