@@ -29,6 +29,13 @@
 			<version>2.13.3</version>
 		</dependency>
 
+		<dependency>
+    		<groupId>nl.jqno.equalsverifier</groupId>
+    		<artifactId>equalsverifier</artifactId>
+    		<version>3.5.1</version>
+    		<scope>test</scope>
+		</dependency>
+		
 
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
 		<dependency>

@@ -30,6 +30,15 @@ public class Order
 		this.itemsOrdered = itemsOrdered;
 	}
 	
+	public Order(Long orderID, Long customerID, String dateOrdered, HashMap<Long, Long> itemsOrdered)
+	{
+		super();
+		this.orderID = orderID;
+		this.customerID = customerID;
+		this.dateOrdered = dateOrdered;
+		this.itemsOrdered = itemsOrdered;
+	}
+	
 
 	public Long getOrderID() {
 		return orderID;

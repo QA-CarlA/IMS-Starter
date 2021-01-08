@@ -1,8 +1,11 @@
 package com.qa.ims.persistence.domain;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
+
+import nl.jqno.equalsverifier.EqualsVerifier;
 
 public class CustomerDomainTest
 {
@@ -19,8 +22,24 @@ public class CustomerDomainTest
 	}
 	
 	@Test
-	public void testGetFirstName()
+	public void testSetFirstName()
 	{
+		String fName = "Marine";
+		customer.setFirstName(fName);;
+		assertEquals(String.valueOf(fName), customer.getFirstName());
 	}
 	
+	@Test
+	public void testSetLastName()
+	{
+		String lName = "Housho";
+		customer.setSurname(lName);;
+		assertEquals(String.valueOf(lName), customer.getSurname());
+	}
+	
+	@Test
+	public void testEquals()
+	{
+		EqualsVerifier.simple().forClass(Customer.class).verify();
+	}
 }
