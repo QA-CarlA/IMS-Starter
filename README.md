@@ -1,41 +1,59 @@
-Coverage: 34%
+Coverage: 75%
 # Project Title
 
-One Paragraph of project description goes here.
+The Inventory Management System allows the user to create, read, update and delete Customers, Items and Orders.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Java (Specifically Java 14) and Maven was used to develop this. 
+To verify that java has been installed properly you can type "java -version" on the command line likewise with maven by typing "mvn -version" on the command line
 
 ```
-Give examples
+Java (Java Version 14) - https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html
+Maven - https://maven.apache.org/
+Git (not mandatory but makes it easier) - https://git-scm.com
 ```
 
 ### Installing
+-The provided jar file only works with a local host database.
 
-A step by step series of examples that tell you how to get a development env running
+To start off, navigate to the directory that you want to place the folder (in my case its C:\Users\User\ProjectLocation) using git or the Command Prompt
+If you don't have git installed then just download the zip file and extract it in the folder
 
-Say what the step will be
-
+If you have git installed
 ```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+-Open Command Prompt-
+cd Documents/ProjectLocation
+OR
+Right Click on ProgramLocation folder then press 'Git Bash here'
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Copy the repository link and use 'git clone -insert link here-' 
+
+```
+C:\Users\User\ProjectLocation> git clone https://github.com/QA-CarlA/IMS-Starter.git
+```
+
+In order to run the jav file, find the IMS.jav file on the Documentation and move it in C:\Users\User\ProjectLocation\IMS-Starter
+Then run the application by open the project folder in command prompt and run the jar file by typing
+
+```
+C:\Users\User\ProjectLocation> cd IMS-Starter
+C:\Users\User\ProjectLocation\IMS-Starter> java -jar IMS.jav 
+```
+
+To use your own database, open the DBUtils class using and edit the DB_URL, DB_USER and DB_PASS to the url, username and password of your database.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system. Break down into which tests and what they do
+To be able to run the tests, open Command Prompt on the project folder then type 'mvn test'
+```
+C:\Users\User\ProjectLocation\IMS-Starter> mvn test
+```
 
 ### Unit Tests 
 
